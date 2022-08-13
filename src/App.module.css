@@ -2,8 +2,9 @@
     display: flex;
     max-width:  46rem;
     margin: auto;
-    margin-top: calc(0px - 1.6rem - 5px);
+    margin-top: calc(0px - 1.5rem - 5px);
     flex-direction: column;
+    padding: 0 1rem 1rem 1rem;
 }
 
 .containerRow {
@@ -21,6 +22,8 @@
     border-radius: 8px;
     line-height: 1.4;
     border: 0;
+    border: 1px solid var(--gray-700);
+    font-size: 0.875rem;
 }
 
 .button {
@@ -36,6 +39,10 @@
     font-weight: 700;
     font-size: 0.875rem;
     line-height: 1.225;
+}
+
+.button:hover {
+    background: var(--blue);
 }
 
 .countTasks {
