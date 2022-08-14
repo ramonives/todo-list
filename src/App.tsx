@@ -7,20 +7,23 @@ import { Task } from "./components/Task";
 import styles from "./App.module.css";
 import "./global.css";
 
+export interface ITask {
+  id: number;
+  content: string;
+  done: boolean;
+}
+
 export function App() {
-  const [tasks, setTasks] = useState([
-    {
-      id: Math.random(),
-      content: "Primeira task",
-      done: false,
-    },
-    {
-      id: Math.random(),
-      content: "Segunda task",
-      done: true,
-    },
-  ]);
+  const [tasks, setTasks] = useState<ITask[]>([]);
   const [task, setTask] = useState("");
+  const numberOfTasks = tasks.length;
+  let tasksDoneCount = 0
+  tasks.map(task => {
+    if(task.done === true) {
+      tasksDoneCount = tasksDoneCount + 1
+    };
+  })
+
 
   function handleCreateNewTask(e: FormEvent) {
     e.preventDefault();
@@ -79,11 +82,11 @@ export function App() {
           <div className={styles.containerRow}>
             <p className={styles.createdTasks}>
               Tarefas criadas
-              <p className={styles.amount}>0</p>
+              <a className={styles.amount}>{numberOfTasks}</a>
             </p>
             <p className={styles.completedTasks}>
               Concluidas
-              <p className={styles.amount}>0</p>
+              <a className={styles.amount}>{tasksDoneCount}</a>
             </p>
           </div>
         </div>
@@ -93,6 +96,7 @@ export function App() {
         ) : (
           tasks.map((task) => (
             <Task
+              key={task.id}
               task={task}
               onDeleteTask={deleteTask}
               onToggleTaskDone={toggleTaskDone}

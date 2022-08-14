@@ -1,11 +1,7 @@
 import { Trash } from "phosphor-react";
 import styles from "./Task.module.css";
 
-interface ITask {
-  id: number;
-  content: string;
-  done: boolean;
-}
+import { ITask } from "../App"
 
 interface ITaskProps {
   task: ITask;
