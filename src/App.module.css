@@ -41,6 +41,10 @@
     line-height: 1.225;
 }
 
+.button[type=submit]:disabled {
+    cursor: not-allowed;
+}
+
 .button:hover {
     background: var(--blue);
 }
